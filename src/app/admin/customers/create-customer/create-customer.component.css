@@ -1,0 +1,7 @@
+.comman {
+    box-sizing: border-box;
+    padding: 25px 25px;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+}

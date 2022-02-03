@@ -1,0 +1,45 @@
+<mat-sidenav-container class="sidenav-container">
+
+    <mat-sidenav #drawer fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+
+        <app-authorize-view [role]="'admin'">
+            <ng-container authorized>
+                <div class="sidenav">
+                    <mat-toolbar>Menu</mat-toolbar>
+                    <mat-nav-list>
+                        <a mat-list-item routerLink="/customers">Customers</a>
+                        <a mat-list-item routerLink="/suppliers">Suppliers</a>
+                        <a mat-list-item routerLink="/stock">Stock</a>
+                        <a mat-list-item routerLink="/reports">Reports</a>
+                    </mat-nav-list>
+                </div>
+            </ng-container>
+        </app-authorize-view>
+    </mat-sidenav>
+
+
+    <mat-sidenav-content>
+        <app-authorize-view [role]="'admin'">
+            <ng-container authorized>
+                <mat-toolbar color="primary">
+                    <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" *ngIf="isHandset$ | async">
+                     <mat-icon aria-label="Side nav toggle icon">menu </mat-icon>
+                    </button>
+
+                    <span>eMedicalStore</span>
+                    <div class="space">
+                    </div>
+                    <span>Hello, {{securityService.getFieldFromJWT('email')}}</span>
+                    <a mat-button routerLink="/logout">Logout</a>
+                </mat-toolbar>
+            </ng-container>
+        </app-authorize-view>
+
+        <div class="comman">
+            <router-outlet>
+
+            </router-outlet>
+        </div>
+
+    </mat-sidenav-content>
+</mat-sidenav-container>

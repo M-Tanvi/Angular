@@ -1,0 +1,44 @@
+<form (submit)="saveChanges()" [formGroup]="form">
+    <mat-form-field *ngIf="hide" appearance="outline">
+        <mat-label>Medicine Name</mat-label>
+        <input formControlName="itemName" matInput />
+        <mat-error *ngIf="form.invalid">{{getErrorMessageFieldName()}}</mat-error>
+    </mat-form-field><br/>
+    <mat-form-field *ngIf="hide" appearance="outline">
+        <mat-label>Details</mat-label>
+        <input formControlName="itemDetail" matInput />
+        <mat-error *ngIf="form.invalid">{{getErrorMessageFieldName()}}</mat-error>
+    </mat-form-field><br/>
+    <mat-form-field *ngIf="hide" appearance="outline">
+        <mat-label>Cost Price</mat-label>
+        <input formControlName="itemPrice" matInput />
+        <mat-error *ngIf="form.invalid">{{getErrorMessageFieldName()}}</mat-error>
+    </mat-form-field><br/>
+    <mat-form-field appearance="outline">
+        <mat-label>Quantity</mat-label>
+        <input formControlName="quantity" matInput />
+        <mat-error *ngIf="form.invalid">{{getErrorMessageFieldName()}}</mat-error>
+    </mat-form-field><br/>
+    <mat-form-field *ngIf="hide" appearance="outline">
+        <mat-label>Location</mat-label>
+        <input formControlName="location" matInput />
+        <mat-error *ngIf="form.invalid">{{getErrorMessageFieldName()}}</mat-error>
+    </mat-form-field><br/>
+    <mat-form-field *ngIf="hide" appearance="outline">
+        <input formControlName="expiryDate" matInput placeholder="2022-01-19" />
+    </mat-form-field><br/>
+
+    <mat-form-field *ngIf="hide" appearance="outline">
+        <mat-label>Assignee</mat-label>
+        <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="optionSelected($event)">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option.companyId">
+                {{option.companyName}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field><br/>
+    <div>
+        <button mat-flat-button color="primary">Save Changes</button>
+        <a mat-stroked-button routerLink="/suppliers">Cancel</a>
+    </div>
+</form>
