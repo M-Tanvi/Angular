@@ -23,12 +23,8 @@ export class LoginComponent implements OnInit {
   login(userCredentials: userCredentials) {
     this.securityService.login(userCredentials)
       .subscribe((authenticationResponse) => {
-      
         this.securityService.saveToken(authenticationResponse);
         this.router.navigate(['/admin']);
-       
-          
-        
       });
   }
 }
