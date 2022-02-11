@@ -22,7 +22,6 @@ export class EditStockComponent implements OnInit {
   }
 
   saveChanges(stockCreationDTO: stockCreationDTO){
-    alert(this.model.stockID);
     this.stockservice.editStock(this.model.stockID, stockCreationDTO ).subscribe(() => {
       this.router.navigate(['/stock']);
     });

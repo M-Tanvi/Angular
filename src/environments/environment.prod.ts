@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiURL: 'https://localhost:44380/api'
+  apiURL: 'https://medicalstoreapi.azurewebsites.net/api'
 };

@@ -18,7 +18,6 @@ export class CreateStockComponent implements OnInit {
   }
 
   saveChanges(stockCreationDTO: stockCreationDTO){
-    alert(stockCreationDTO);
     this.stockservice.create(stockCreationDTO).subscribe(() => {
       this.router.navigate(['/stock']);
     });
